@@ -5,7 +5,7 @@ OBJCOPY = sdobjcopy
 SDAS_OPT=-plowgff
 SDLD_OPT=-mwxiu
 
-OBJECTS = main uart_init uart_send uart_recv
+OBJECTS = main uart_init uart_send uart_recv uart_putstr
 
 all: obj/z1013 obj/z1013/uart-demo.z80
 

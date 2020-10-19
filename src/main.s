@@ -5,6 +5,7 @@
         .globl  uart_init
         .globl  uart_send
         .globl  uart_recv
+        .globl  uart_putstr
         .globl  putchar
 ;
 ;       exports
@@ -17,7 +18,7 @@
 main:
         call    uart_init
         ld      hl,#msg_welcome
-        call    send_msg
+        call    uart_putstr
 
 next_char:
         call    uart_recv
@@ -26,15 +27,6 @@ next_char:
         ret     z
         call    putchar
         jr      next_char
-
-send_msg:
-        ld      a,(hl)
-        or      a,a
-        ret     z
-        ld      e,a
-        call    uart_send
-        inc     hl
-        jr      send_msg
 
 msg_welcome:
         .asciz  'Hello UART\r'
