@@ -29,5 +29,5 @@ next_char:
         jr      next_char
 
 msg_welcome:
-        .asciz  'Hello UART\r'
+        .asciz  'UHello UART\r'
 

@@ -16,6 +16,10 @@ obj/z1013/uart-demo.z80: obj/z1013/crt0_z1013.rel $(addsuffix .rel,$(addprefix o
 	$(LINK) $(SDLD_OPT) -b _HEADER=0x00e0 -b _CODE=0x0100 -i $(@:z80=ihx) $^
 	$(OBJCOPY) -Iihex -Obinary $(@:z80=ihx) $(@:z80=out)
 	dd if=$(@:z80=out) of=$@ bs=32 conv=sync
+	java -jar jar/tape-writer.jar -s 300 -t Z1013Header "$@"
+	
+play: obj/z1013/uart-demo.z80
+	playsound $(^:z80=z1013header.wav) 
 	
 obj/z1013/%.rel:src/%.s
 	$(AS) -plosgff -Iinclude "$@" "$<"

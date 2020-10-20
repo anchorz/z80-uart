@@ -17,7 +17,7 @@
         
         .area   _HEADER
         .dw     start
-        .dw     s__DATA
+        .dw     s__DATA-1
         .dw     start
         .ascii  'SDASZ8'
         .db     'C'
